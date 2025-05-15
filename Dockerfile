@@ -1,13 +1,13 @@
-FROM python:3.8-slim-buster
+FROM python:3.8-slim
 
-# Устанавливаем рабочую директорию в контейнере
 WORKDIR /app
 
-# Копируем файлы проекта в рабочую директорию
-COPY . /app
-
-# Устанавливаем зависимости
+COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Определяем команду запуска контейнера
+COPY . .
+
+# Добавьте эту строку
+EXPOSE 8443
+
 CMD ["python", "animebot.py"]
