@@ -425,12 +425,13 @@ def main():
     # Запуск webhook для работы на хостинге
     app.run_webhook(
         listen="0.0.0.0",
-        port=8443,
-        webhook_url="https://botfotki-wd8u2eri.b4a.run/7749183289:AAG-4DV9aSpyoHJ8QBfoEZDFTaAyj2Re_fM"
-    )  # <-- здесь должна быть закрывающая скобка
-
+        port=8080,         # Изменить на 8080 для соответствия настройкам Back4App
+        url_path="webhook", # Добавить явный путь для webhook
+        webhook_url="https://botfotki-wd8u2eri.b4a.run/webhook"
+    )
 
 if __name__ == "__main__":
     main()
+
 
 
