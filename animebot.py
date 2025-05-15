@@ -424,6 +424,13 @@ def main():
     # Добавление обработчика ошибок
     app.add_error_handler(error_handler)
     
+    # Используем webhook вместо polling
+    app.run_webhook(
+        listen="0.0.0.0",
+        port=8443,
+        webhook_url=f"https://botfotki-wd8u2eri.b4a.run/{app.bot.token}"
+    )
+
     # Запуск бота
     print("Бот запускается...")
     logger.info("Бот запускается...")
