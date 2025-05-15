@@ -416,7 +416,7 @@ def main():
     # Создание приложения
     app = Application.builder().token("7749183289:AAG-4DV9aSpyoHJ8QBfoEZDFTaAyj2Re_fM").build()
     
-    # Регистрация обработчиков
+    # Регистрация обработчиков команд
     app.add_handler(CommandHandler("start", start))
     app.add_handler(CommandHandler("menu", show_main_menu))
     app.add_handler(CallbackQueryHandler(button))
@@ -431,4 +431,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
