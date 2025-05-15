@@ -414,7 +414,7 @@ async def error_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 def main():
     # Создание приложения
-    app = Application.builder().token("7749183289:AAEobPS3th53Szq09wVkN0W6NzdiDmJGiaE").build()
+    app = Application.builder().token("7749183289:AAG-4DV9aSpyoHJ8QBfoEZDFTaAyj2Re_fM").build()
     
     # Регистрация обработчиков команд
     app.add_handler(CommandHandler("start", start))
@@ -424,17 +424,22 @@ def main():
     # Добавление обработчика ошибок
     app.add_error_handler(error_handler)
     
-    # Используем webhook вместо polling
-    app.run_webhook(
-        listen="0.0.0.0",
-        port=8443,
-        webhook_url=f"https://botfotki-wd8u2eri.b4a.run/{app.bot.token}"
-    )
-
-    # Запуск бота
-    print("Бот запускается...")
-    logger.info("Бот запускается...")
-    app.run_polling(allowed_updates=Update.ALL_TYPES)
+    # Определяем, запущено ли приложение на сервере или локально
+    import os
+    ON_HEROKU = os.environ.get('PORT')
+    
+    if ON_HEROKU:
+        # Используем webhook на сервере
+        app.run_webhook(
+            listen="0.0.0.0",
+            port=int(os.environ.get('PORT', 8443)),
+            webhook_url="https://botfotki-wd8u2eri.b4a.run/7749183289:AAG-4DV9aSpyoHJ8QBfoEZDFTaAyj2Re_fM"
+        )
+    else:
+        # Используем polling для локальной разработки
+        print("Бот запускается в режиме polling...")
+        logger.info("Бот запускается в режиме polling...")
+        app.run_polling(allowed_updates=Update.ALL_TYPES)
 
 if __name__ == "__main__":
     main()
