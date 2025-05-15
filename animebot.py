@@ -414,7 +414,7 @@ async def error_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 def main():
     # Создание приложения
-    app = Application.builder().token("7749183289:AAG-4DV9aSpyoHJ8QBfoEZDFTaAyj2Re_fM").build()
+    app = Application.builder().token("7793664188:AAGA3n4_oS7-N9kq7lVeDkrpdM12FzWnAac").build()
     
     # Регистрация обработчиков команд
     app.add_handler(CommandHandler("start", start))
@@ -426,7 +426,7 @@ def main():
     app.run_webhook(
         listen="0.0.0.0",
         port=8443,
-        webhook_url="https://botfotki-wd8u2eri.b4a.run/7749183289:AAG-4DV9aSpyoHJ8QBfoEZDFTaAyj2Re_fM"
+        webhook_url="https://botfotki-wd8u2eri.b4a.run/7793664188:AAGA3n4_oS7-N9kq7lVeDkrpdM12FzWnAac"
     )
 
 if __name__ == "__main__":
